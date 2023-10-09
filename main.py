@@ -18,10 +18,72 @@ features = data['features']
 labels = data['labels']
 
 # Real-time Runtime Batch Normalization and Data Augmentation
-# ... (your code for batch normalization and data augmentation)
+from sklearn.utils import shuffle
+
+def data_augmentation(data):
+    """
+    Perform data augmentation techniques.
+    """
+    # Adding Gaussian noise
+    noise_factor = 0.05
+    data_with_noise = data + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=data.shape)
+    
+    # Scaling
+    scaling_factor = 1.2
+    data_scaled = data * scaling_factor
+    
+    # Concatenating the original, noisy, and scaled data
+    augmented_data = np.concatenate((data, data_with_noise, data_scaled))
+    
+    # Shuffling the data
+    augmented_data = shuffle(augmented_data)
+    
+    return augmented_data
+
+# Example usage in the main function or any other part of your script
+if __name__ == "__main__":
+    # ... (previous code)
+    
+    # Data Augmentation
+    augmented_features = data_augmentation(normalized_features)
+    
 
 # Feature Representation using N-grams and One-hot Encoding
-# ... (your code for N-grams and one-hot encoding)
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.feature_extraction.text import CountVectorizer
+import numpy as np
+
+def generate_ngrams(opcodes, n=2):
+    """
+    Generate N-grams from the list of opcodes.
+    """
+    ngrams = []
+    for i in range(len(opcodes) - n + 1):
+        ngram = ' '.join(opcodes[i:i+n])
+        ngrams.append(ngram)
+    return ngrams
+
+def one_hot_encoding(ngrams):
+    """
+    Perform one-hot encoding on the N-grams.
+    """
+    onehot_encoder = OneHotEncoder(sparse=False)
+    ngrams_array = np.array(ngrams).reshape(-1, 1)
+    onehot_encoded = onehot_encoder.fit_transform(ngrams_array)
+    return onehot_encoded
+
+# Example usage in the main function or any other part of your script
+if __name__ == "__main__":
+    # Sample list of opcodes
+    sample_opcodes = ['PUSH1', 'ADD', 'PUSH1', 'MSTORE', 'PUSH1', 'SHA3']
+    
+    # Generate 2-grams from the sample opcodes
+    ngrams = generate_ngrams(sample_opcodes, n=2)
+    print("Generated N-grams:", ngrams)
+    
+    # Perform one-hot encoding on the generated N-grams
+    onehot_encoded_ngrams = one_hot_encoding(ngrams)
+    print("One-hot Encoded N-grams:", onehot_encoded_ngrams)
 
 # Splitting the dataset
 X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.2, random_state=42)
