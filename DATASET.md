@@ -27,7 +27,7 @@ To use this dataset in the VdaBSc-Project, follow these steps:
 1. Clone the dataset repository to your local machine:
 
     ```bash
-    git clone https://github.com/smartbugs/smartbugs-wild.git
+    git clone [your github]
     ```
 
 2. Move the dataset into the `data/` directory in the VdaBSc-Project repository:
