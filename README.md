@@ -67,7 +67,7 @@ We welcome contributions from the research community. For guidelines on contribu
 
 ### MIT License
 
-VdaBSc is licensed under the MIT License. For the full license text, refer to the `LICENSE` file in the repository or visit [MIT License](https://opensource.org/licenses/MIT).
+VdaBSc is licensed under the MIT License. For the full license text, refer to the `LICENSE` file in the repository or visit [MIT License](LICENSE.md).
 
 ---
 
