@@ -27,7 +27,7 @@ To use this dataset in the VdaBSc-Project, follow these steps:
 1. Clone the dataset repository to your local machine:
 
     ```bash
-    git clone [your github]
+    git clone (https://github.com/niirex1/VdaBSc-dataset.git)
     ```
 
 2. Move the dataset into the `data/` directory in the VdaBSc-Project repository:
